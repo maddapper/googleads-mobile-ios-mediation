@@ -1,0 +1,9 @@
+
+adapters/MoPub/Pods
+adapters/MoPub/build/DependentBuilds
+adapters/MoPub/build/MoPubAdapter.build
+adapters/MoPub/build/Pods.build
+adapters/MoPub/build/XCBuildData
+adapters/MoPub/build/Debug-iphoneos
+adapters/MoPub/build/Debug-iphonesimulator
+adapters/MoPub/MoPubAdapter.xcworkspace/xcuserdata

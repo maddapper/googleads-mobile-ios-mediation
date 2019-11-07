@@ -1,5 +1,5 @@
-#import "GADMAdapterMoPubSingleton.h"
 
+#import "GADMAdapterMoPubSingleton.h"
 #import "GADMAdapterMoPubUtils.h"
 #import "MPRewardedVideo.h"
 
@@ -7,14 +7,10 @@
 @end
 
 @implementation GADMAdapterMoPubSingleton {
-  /// Stores rewarded ad delegate with ad unit identifier as a key.
   NSMapTable<NSString *, id<MPRewardedVideoDelegate>> *_adapterDelegates;
-
-  /// Serializes ivar usage.
-  dispatch_queue_t _lockQueue;
 }
 
-+ (nonnull GADMAdapterMoPubSingleton *)sharedInstance {
++ (nonnull instancetype)sharedInstance {
   static GADMAdapterMoPubSingleton *sharedMyManager = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
@@ -24,11 +20,9 @@
 }
 
 - (nonnull instancetype)init {
-  self = [super init];
-  if (self) {
+  if (self = [super init]) {
     _adapterDelegates = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsStrongMemory
-                                              valueOptions:NSPointerFunctionsWeakMemory];
-    _lockQueue = dispatch_queue_create("mopub-rewardedAdapterDelegates", DISPATCH_QUEUE_SERIAL);
+                                                  valueOptions:NSPointerFunctionsWeakMemory];
   }
   return self;
 }
@@ -52,38 +46,38 @@
                                             }];
 }
 
-- (void)addDelegate:(nonnull id<MPRewardedVideoDelegate>)adapterDelegate
-        forAdUnitID:(nonnull NSString *)adUnitID {
-  dispatch_async(_lockQueue, ^{
-    GADMAdapterMoPubMapTableSetObjectForKey(self->_adapterDelegates, adUnitID, adapterDelegate);
-  });
+- (void)addDelegate:(id<MPRewardedVideoDelegate>)adapterDelegate forAdUnitID:(NSString *)adUnitID {
+  @synchronized(_adapterDelegates) {
+    GADMAdapterMoPubMapTableSetObjectForKey(_adapterDelegates, adUnitID, adapterDelegate);
+  }
 }
 
-- (void)removeDelegateForAdUnitID:(nonnull NSString *)adUnitID {
-  dispatch_async(_lockQueue, ^{
-    GADMAdapterMoPubMapTableRemoveObjectForKey(self->_adapterDelegates, adUnitID);
-  });
+- (void)removeDelegateForAdUnitID:(NSString *)adUnitID {
+  @synchronized(_adapterDelegates) {
+    GADMAdapterMoPubMapTableRemoveObjectForKey(_adapterDelegates, adUnitID);
+  }
 }
 
-- (nullable id<MPRewardedVideoDelegate>)getDelegateForAdUnitID:(nonnull NSString *)adUnitID {
-  __block id<MPRewardedVideoDelegate> delegate = nil;
-  dispatch_sync(_lockQueue, ^{
-    delegate = [self->_adapterDelegates objectForKey:adUnitID];
-  });
-  return delegate;
+- (id<MPRewardedVideoDelegate>)getDelegateForAdUnitID:(NSString *)adUnitID {
+  @synchronized(_adapterDelegates) {
+    return [_adapterDelegates objectForKey:adUnitID];
+  }
 }
 
-- (nullable NSError *)
-    requestRewardedAdForAdUnitID:(nonnull NSString *)adUnitID
-                        adConfig:(nonnull GADMediationRewardedAdConfiguration *)adConfig
-                        delegate:(nonnull id<MPRewardedVideoDelegate>)delegate {
+- (nullable NSError *)requestRewardedAdForAdUnitID:(nonnull NSString *)adUnitID
+                                 adConfig:(nonnull GADMediationRewardedAdConfiguration *)adConfig
+                                 delegate:(nonnull id<MPRewardedVideoDelegate>)delegate {
   [MPRewardedVideo setDelegate:self forAdUnitId:adUnitID];
 
   if ([self getDelegateForAdUnitID:adUnitID]) {
     NSString *description = @"MoPub does not support requesting a 2nd ad for the same ad unit ID "
                             @"while the first request is in progress.";
-    NSError *error =
-        GADMAdapterMoPubErrorWithCodeAndDescription(kGADErrorMediationAdapterError, description);
+    NSDictionary *userInfo =
+        @{NSLocalizedDescriptionKey : description, NSLocalizedFailureReasonErrorKey : description};
+
+    NSError *error = [NSError errorWithDomain:kGADMAdapterMoPubErrorDomain
+                                         code:0
+                                     userInfo:userInfo];
     return error;
   } else {
     [self addDelegate:delegate forAdUnitID:adUnitID];

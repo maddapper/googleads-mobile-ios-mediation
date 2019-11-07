@@ -1,15 +1,16 @@
 #import "GADMediationAdapterMoPub.h"
 
-#import "GADMAdapterMoPubConstants.h"
 #import "GADMAdapterMoPubSingleton.h"
-#import "GADMAdapterMoPubUtils.h"
 #import "GADMMoPubRewardedAd.h"
 #import "GADMoPubNetworkExtras.h"
 #import "MPRewardedVideo.h"
 #import "MoPub.h"
+#import "MoPubAdapterConstants.h"
+
+@interface GADMediationAdapterMoPub () <MPRewardedVideoDelegate>
+@end
 
 @implementation GADMediationAdapterMoPub {
-  /// MoPub rewarded ad wrapper.
   GADMMoPubRewardedAd *_rewardedAd;
 }
 
@@ -26,8 +27,9 @@
                                                                completionHandler(nil);
                                                              }];
   } else {
-    NSError *error = GADMAdapterMoPubErrorWithCodeAndDescription(
-        kGADErrorMediationAdapterError, @"Failed to initialize MoPub SDK. Ad unit ID is empty.");
+    NSError *error = [NSError errorWithDomain:kGADMAdapterMoPubErrorDomain
+                                         code:0
+                                     userInfo:@{NSLocalizedFailureReasonErrorKey : @"Failed to initialize MoPub SDK. Ad unit ID is empty."}];
     completionHandler(error);
   }
 }
@@ -66,7 +68,7 @@
                            (GADMediationRewardedLoadCompletionHandler)completionHandler {
   _rewardedAd = [[GADMMoPubRewardedAd alloc] init];
   [_rewardedAd loadRewardedAdForAdConfiguration:adConfiguration
-                              completionHandler:completionHandler];
+                                  completionHandler:completionHandler];
 }
 
 @end

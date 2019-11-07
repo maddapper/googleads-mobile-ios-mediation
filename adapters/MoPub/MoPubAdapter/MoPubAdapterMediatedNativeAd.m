@@ -1,81 +1,55 @@
-#import "GADMAdapterMopubUnifiedNativeAd.h"
+#import "MoPubAdapterMediatedNativeAd.h"
 
-#import "GADMAdapterMoPubConstants.h"
 #import "MPAdDestinationDisplayAgent.h"
 #import "MPCoreInstanceProvider.h"
 #import "MPLogging.h"
 #import "MPNativeAd.h"
 #import "MPNativeAdConstants.h"
+#import "MoPubAdapterConstants.h"
 
-@interface GADMAdapterMopubUnifiedNativeAd () <MPAdDestinationDisplayAgentDelegate>
+@interface MoPubAdapterMediatedNativeAd () <MPAdDestinationDisplayAgentDelegate>
 @end
 
-@implementation GADMAdapterMopubUnifiedNativeAd {
-  /// Main image.
-  GADNativeAdImage *_mainImage;
-
-  /// Media view.
-  UIImageView *_mediaView;
-
-  /// Icon image.
-  GADNativeAdImage *_iconImage;
-
-  /// Dictionary of extra assets which are sent to the Google Moile Ads SDK.
+@implementation MoPubAdapterMediatedNativeAd {
+  NSArray<GADNativeAdImage *> *_mappedImages;
+  GADNativeAdImage *_mappedLogo;
   NSDictionary<NSString *, id> *_extras;
-
-  /// MoPub native ad.
   MPNativeAd *_nativeAd;
-
-  /// A dictionary representing the MoPub native ad properties.
   NSDictionary<NSString *, id> *_nativeAdProperties;
-
-  /// Display agent that helps presenting the destination URL when the ad choices is been clicked.
   MPAdDestinationDisplayAgent *_displayDestinationAgent;
-
-  /// ViewController that should be used to present modal views for the ad.
   UIViewController *_baseViewController;
-
-  /// Ad loader options for configuring the view of native ads.
   GADNativeAdViewAdOptions *_nativeAdViewOptions;
-
-  /// Network extras set by the publisher.
   GADMoPubNetworkExtras *_networkExtras;
-
-  /// MoPub's privacy icon image view.
   UIImageView *_privacyIconImageView;
 }
 
-- (nonnull instancetype)initWithMoPubNativeAd:(nonnull MPNativeAd *)mopubNativeAd
-                                    mainImage:(nullable GADNativeAdImage *)mainImage
-                                    iconImage:(nullable GADNativeAdImage *)iconImage
-                          nativeAdViewOptions:
-                              (nonnull GADNativeAdViewAdOptions *)nativeAdViewOptions
-                                networkExtras:(nullable GADMoPubNetworkExtras *)networkExtras {
+- (instancetype)initWithMoPubNativeAd:(nonnull MPNativeAd *)moPubNativeAd
+                         mappedImages:(nullable NSMutableDictionary<NSString *, GADNativeAdImage *> *)downloadedImages
+                  nativeAdViewOptions:(nonnull GADNativeAdViewAdOptions *)nativeAdViewOptions
+                        networkExtras:(nullable GADMoPubNetworkExtras *)networkExtras {
+  if (!moPubNativeAd) {
+    return nil;
+  }
   self = [super init];
   if (self) {
-    _nativeAd = mopubNativeAd;
-    _nativeAdProperties = mopubNativeAd.properties;
+    _nativeAd = moPubNativeAd;
+    _nativeAdProperties = moPubNativeAd.properties;
     _nativeAdViewOptions = nativeAdViewOptions;
     _networkExtras = networkExtras;
 
     CGFloat defaultImageScale = 1;
-    if (mainImage) {
-      _mainImage = mainImage;
-    } else {
-      NSURL *imageURL = [NSURL URLWithString:_nativeAdProperties[kAdMainImageKey]];
-      if (imageURL) {
-        mainImage = [[GADNativeAdImage alloc] initWithURL:imageURL scale:defaultImageScale];
-      }
-    }
 
-    _mediaView = [[UIImageView alloc] initWithImage:_mainImage.image];
-
-    if (iconImage) {
-      _iconImage = iconImage;
-    } else {
-      NSURL *logoImageURL = [NSURL URLWithString:_nativeAdProperties[kAdIconImageKey]];
-      if (logoImageURL) {
-        _iconImage = [[GADNativeAdImage alloc] initWithURL:logoImageURL scale:defaultImageScale];
+    if (downloadedImages != nil) {
+      _mappedImages =
+          [[NSArray alloc] initWithObjects:[downloadedImages objectForKey:kAdMainImageKey], nil];
+      if ([downloadedImages objectForKey:kAdIconImageKey]) {
+        _mappedLogo = [downloadedImages objectForKey:kAdIconImageKey];
+      } else {
+        NSURL *logoImageURL =
+            [NSURL URLWithString:[_nativeAdProperties objectForKey:kAdIconImageKey]];
+        if (logoImageURL != nil) {
+          _mappedLogo = [[GADNativeAdImage alloc] initWithURL:logoImageURL scale:defaultImageScale];
+        }
       }
     }
   }
@@ -84,61 +58,44 @@
 
 #pragma mark - GADMediatedUnifiedNativeAd implementation
 
-- (nullable NSString *)headline {
-  return _nativeAdProperties[kAdTitleKey];
+- (NSString *)headline {
+  return [_nativeAdProperties objectForKey:kAdTitleKey];
 }
 
-- (nullable NSString *)body {
-  return _nativeAdProperties[kAdTextKey];
+- (NSString *)body {
+  return [_nativeAdProperties objectForKey:kAdTextKey];
 }
 
-- (nullable GADNativeAdImage *)icon {
-  return _iconImage;
+- (GADNativeAdImage *)icon {
+  return _mappedLogo;
 }
 
-- (nullable NSArray<GADNativeAdImage *> *)images {
-  return @[ _mainImage ];
+- (NSArray *)images {
+  return _mappedImages;
 }
 
-- (nullable NSString *)callToAction {
-  return _nativeAdProperties[kAdCTATextKey];
+- (NSString *)callToAction {
+  return [_nativeAdProperties objectForKey:kAdCTATextKey];
 }
 
-- (nullable NSString *)advertiser {
+- (NSString *)advertiser {
   return nil;
 }
 
-- (nullable NSDictionary *)extraAssets {
+- (NSDictionary *)extraAssets {
   return _extras;
 }
 
-- (nullable NSDecimalNumber *)starRating {
+- (NSDecimalNumber *)starRating {
   return 0;
 }
 
-- (nullable NSString *)store {
+- (NSString *)store {
   return nil;
 }
 
-- (nullable NSString *)price {
+- (NSString *)price {
   return nil;
-}
-
-- (nullable UIView *)mediaView {
-  return _mediaView;
-}
-
-- (BOOL)hasVideoContent {
-  return NO;
-}
-
-- (CGFloat)mediaContentAspectRatio {
-  if (_mainImage) {
-    if (_mainImage.image.size.height > 0) {
-      return (_mainImage.image.size.width / _mainImage.image.size.height);
-    }
-  }
-  return 0.0f;
 }
 
 - (void)privacyIconTapped {
@@ -229,6 +186,13 @@
   if (_nativeAd) {
     [_nativeAd performSelector:@selector(adViewTapped)];
   }
+}
+
+- (UIView *GAD_NULLABLE_TYPE)mediaView {
+  GADNativeAdImage *nativeAdImage = (GADNativeAdImage *)_mappedImages[0];
+  UIImage *image = [(UIImage *)nativeAdImage valueForKey:@"image"];
+  UIImageView *mainImageView = [[UIImageView alloc] initWithImage:image];
+  return mainImageView;
 }
 
 - (void)didUntrackView:(UIView *)view {
