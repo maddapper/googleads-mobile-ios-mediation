@@ -8,3 +8,6 @@ adapters/MoPub/build/Debug-iphoneos
 adapters/MoPub/build/Debug-iphonesimulator
 adapters/MoPub/MoPubAdapter.xcworkspace/xcuserdata
 adapters/Facebook/Pods
+adapters/Facebook/FacebookAdapter.xcodeproj/project.xcworkspace/xcuserdata
+adapters/Facebook/FacebookAdapter.xcodeproj/xcuserdata
+adapters/Facebook/FacebookAdapter.xcworkspace/xcuserdata
