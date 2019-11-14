@@ -16,18 +16,18 @@
 #import <FBAudienceNetwork/FBAudienceNetwork.h>
 #import "GADFBBannerRenderer.h"
 #import "GADFBInterstitialRenderer.h"
-#import "GADFBNativeRenderer.h"
+//#import "GADFBNativeRenderer.h"
 #import "GADFBNetworkExtras.h"
-#import "GADFBRewardedRenderer.h"
+//#import "GADFBRewardedRenderer.h"
 #import "GADFBUtils.h"
 #import "GADMAdapterFacebook.h"
 #import "GADMAdapterFacebookConstants.h"
 
 @implementation GADMediationAdapterFacebook {
   /// Facebook Audience Network rewarded ad wrapper.
-  GADFBRewardedRenderer *_rewardedAd;
+//  GADFBRewardedRenderer *_rewardedAd;
   /// Facebook Audience Network native ad wrapper.
-  GADFBNativeRenderer *_native;
+//  GADFBNativeRenderer *_native;
   /// Facebook Audience Network interstitial ad wrapper.
   GADFBInterstitialRenderer *_interstitial;
   /// Facebook Audience Network banner ad wrapper.
@@ -128,26 +128,26 @@
                                     completionHandler:completionHandler];
 }
 
-- (void)loadRewardedAdForAdConfiguration:(GADMediationRewardedAdConfiguration *)adConfiguration
-                       completionHandler:
-                           (GADMediationRewardedLoadCompletionHandler)completionHandler {
-  if ([adConfiguration respondsToSelector:@selector(childDirectedTreatment)] &&
-      adConfiguration.childDirectedTreatment) {
-    [FBAdSettings setIsChildDirected:[adConfiguration.childDirectedTreatment boolValue]];
-  }
-  _rewardedAd = [[GADFBRewardedRenderer alloc] init];
-  [_rewardedAd loadRewardedAdForAdConfiguration:adConfiguration
-                              completionHandler:completionHandler];
-}
+//- (void)loadRewardedAdForAdConfiguration:(GADMediationRewardedAdConfiguration *)adConfiguration
+//                       completionHandler:
+//                           (GADMediationRewardedLoadCompletionHandler)completionHandler {
+//  if ([adConfiguration respondsToSelector:@selector(childDirectedTreatment)] &&
+//      adConfiguration.childDirectedTreatment) {
+//    [FBAdSettings setIsChildDirected:[adConfiguration.childDirectedTreatment boolValue]];
+//  }
+//  _rewardedAd = [[GADFBRewardedRenderer alloc] init];
+//  [_rewardedAd loadRewardedAdForAdConfiguration:adConfiguration
+//                              completionHandler:completionHandler];
+//}
 
-- (void)loadNativeAdForAdConfiguration:(GADMediationNativeAdConfiguration *)adConfiguration
-                     completionHandler:(GADMediationNativeLoadCompletionHandler)completionHandler {
-  if ([adConfiguration respondsToSelector:@selector(childDirectedTreatment)] &&
-      adConfiguration.childDirectedTreatment) {
-    [FBAdSettings setIsChildDirected:[adConfiguration.childDirectedTreatment boolValue]];
-  }
-  _native = [[GADFBNativeRenderer alloc] init];
-  [_native renderNativeAdForAdConfiguration:adConfiguration completionHandler:completionHandler];
-}
+//- (void)loadNativeAdForAdConfiguration:(GADMediationNativeAdConfiguration *)adConfiguration
+//                     completionHandler:(GADMediationNativeLoadCompletionHandler)completionHandler {
+//  if ([adConfiguration respondsToSelector:@selector(childDirectedTreatment)] &&
+//      adConfiguration.childDirectedTreatment) {
+//    [FBAdSettings setIsChildDirected:[adConfiguration.childDirectedTreatment boolValue]];
+//  }
+//  _native = [[GADFBNativeRenderer alloc] init];
+//  [_native renderNativeAdForAdConfiguration:adConfiguration completionHandler:completionHandler];
+//}
 
 @end

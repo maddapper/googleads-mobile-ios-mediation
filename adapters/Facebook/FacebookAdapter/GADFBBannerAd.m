@@ -128,6 +128,7 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize, NSError *__autoreleas
     return;
   }
 
+    [_bannerAd disableAutoRefresh];
   _bannerAd.delegate = _adapterDelegate;
 
   if (size.size.width < 0) {

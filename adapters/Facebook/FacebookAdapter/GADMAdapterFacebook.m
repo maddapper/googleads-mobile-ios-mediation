@@ -19,10 +19,10 @@
 #import "GADFBAdapterDelegate.h"
 #import "GADFBBannerAd.h"
 #import "GADFBInterstitialAd.h"
-#import "GADFBNativeAdBase.h"
-#import "GADFBNativeBannerAd.h"
+//#import "GADFBNativeAdBase.h"
+//#import "GADFBNativeBannerAd.h"
 #import "GADFBNetworkExtras.h"
-#import "GADFBUnifiedNativeAd.h"
+//#import "GADFBUnifiedNativeAd.h"
 #import "GADFBUtils.h"
 #import "GADMAdapterFacebookConstants.h"
 #import "GADMediationAdapterFacebook.h"
@@ -38,10 +38,10 @@
   GADFBInterstitialAd *_interstitialAd;
 
   /// Facebook Audience Network native ad wrapper.
-  GADFBUnifiedNativeAd *_nativeAd;
+//  GADFBUnifiedNativeAd *_nativeAd;
 
   /// Facebook Audience Network native banner ad wrapper.
-  GADFBNativeBannerAd *_nativeBannerAd;
+//  GADFBNativeBannerAd *_nativeBannerAd;
 }
 
 + (NSString *)adapterVersion {
@@ -95,30 +95,30 @@
   [_interstitialAd presentInterstitialFromRootViewController:rootViewController];
 }
 
-- (void)getNativeAdWithAdTypes:(NSArray *)adTypes options:(NSArray *)options {
-  id<GADMAdNetworkConnector> strongConnector = _connector;
-  NSNumber *childDirectedTreatmentValue = [strongConnector childDirectedTreatment];
-  if (childDirectedTreatmentValue) {
-    [FBAdSettings setIsChildDirected:childDirectedTreatmentValue.boolValue];
-  }
-
-  GADFBNetworkExtras *extras = strongConnector.networkExtras;
-  if (extras.nativeAdFormat == GADFBAdFormatNativeBanner) {
-    _nativeBannerAd = [[GADFBNativeBannerAd alloc] initWithGADMAdNetworkConnector:strongConnector
-                                                                          adapter:self];
-    [_nativeBannerAd requestNativeBannerAd];
-  } else {
-    _nativeAd = [[GADFBUnifiedNativeAd alloc] initWithGADMAdNetworkConnector:strongConnector
-                                                                     adapter:self];
-    [_nativeAd requestNativeAd];
-  }
-}
+//- (void)getNativeAdWithAdTypes:(NSArray *)adTypes options:(NSArray *)options {
+//  id<GADMAdNetworkConnector> strongConnector = _connector;
+//  NSNumber *childDirectedTreatmentValue = [strongConnector childDirectedTreatment];
+//  if (childDirectedTreatmentValue) {
+//    [FBAdSettings setIsChildDirected:childDirectedTreatmentValue.boolValue];
+//  }
+//
+//  GADFBNetworkExtras *extras = strongConnector.networkExtras;
+//  if (extras.nativeAdFormat == GADFBAdFormatNativeBanner) {
+//    _nativeBannerAd = [[GADFBNativeBannerAd alloc] initWithGADMAdNetworkConnector:strongConnector
+//                                                                          adapter:self];
+//    [_nativeBannerAd requestNativeBannerAd];
+//  } else {
+//    _nativeAd = [[GADFBUnifiedNativeAd alloc] initWithGADMAdNetworkConnector:strongConnector
+//                                                                     adapter:self];
+//    [_nativeAd requestNativeAd];
+//  }
+//}
 
 - (void)stopBeingDelegate {
   [_bannerAd stopBeingDelegate];
   [_interstitialAd stopBeingDelegate];
-  [_nativeAd stopBeingDelegate];
-  [_nativeBannerAd stopBeingDelegate];
+//  [_nativeAd stopBeingDelegate];
+//  [_nativeBannerAd stopBeingDelegate];
 }
 
 - (BOOL)isBannerAnimationOK:(GADMBannerAnimationType)animType {
