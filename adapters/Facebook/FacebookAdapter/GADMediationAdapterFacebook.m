@@ -107,7 +107,7 @@
                    completionHandler:(GADMediationBannerLoadCompletionHandler)completionHandler {
   if ([adConfiguration respondsToSelector:@selector(childDirectedTreatment)] &&
       adConfiguration.childDirectedTreatment) {
-    [FBAdSettings setIsChildDirected:[adConfiguration.childDirectedTreatment boolValue]];
+    [FBAdSettings setMixedAudience:[adConfiguration.childDirectedTreatment boolValue]];
   }
 
   _banner = [[GADFBBannerRenderer alloc] init];
@@ -120,7 +120,7 @@
                              (GADMediationInterstitialLoadCompletionHandler)completionHandler {
   if ([adConfiguration respondsToSelector:@selector(childDirectedTreatment)] &&
       adConfiguration.childDirectedTreatment) {
-    [FBAdSettings setIsChildDirected:[adConfiguration.childDirectedTreatment boolValue]];
+    [FBAdSettings setMixedAudience:[adConfiguration.childDirectedTreatment boolValue]];
   }
 
   _interstitial = [[GADFBInterstitialRenderer alloc] init];

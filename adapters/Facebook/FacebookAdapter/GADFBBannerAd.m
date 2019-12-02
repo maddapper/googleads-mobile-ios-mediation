@@ -23,7 +23,7 @@
 #import "GADMediationAdapterFacebook.h"
 
 /// Converts ad size from Google Mobile Ads SDK to ad size interpreted by Facebook Audience Network.
-static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize, NSError *__autoreleasing *error) {
+static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize) {
   CGSize gadAdCGSize = CGSizeFromGADAdSize(gadAdSize);
   GADAdSize banner50 =
       GADAdSizeFromCGSize(CGSizeMake(gadAdCGSize.width, kFBAdSizeHeight50Banner.size.height));
@@ -38,23 +38,20 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize, NSError *__autoreleas
   ];
   GADAdSize closestSize = GADClosestValidSizeForAdSizes(gadAdSize, potentials);
   CGSize size = CGSizeFromGADAdSize(closestSize);
+    
+  FBAdSize fbSize;
   if (size.height == kFBAdSizeHeight50Banner.size.height) {
-    return kFBAdSizeHeight50Banner;
+      fbSize = kFBAdSize320x50;
   } else if (size.height == kFBAdSizeHeight90Banner.size.height) {
-    return kFBAdSizeHeight90Banner;
+      fbSize.size = CGSizeZero;
   } else if (size.height == kFBAdSizeHeight250Rectangle.size.height) {
-    return kFBAdSizeHeight250Rectangle;
+      fbSize.size = CGSizeMake(300, 250);
   } else if (CGSizeEqualToSize(size, kFBAdSizeInterstitial.size)) {
-    return kFBAdSizeInterstitial;
+      fbSize.size = CGSizeZero;
+  } else {
+      fbSize.size = CGSizeZero;
   }
-
-  if (error) {
-    *error = GADFBErrorWithDescription(
-        [NSString stringWithFormat:@"Invalid size for Facebook mediation adapter. Size: %@",
-                                   NSStringFromGADAdSize(gadAdSize)]);
-  }
-
-  FBAdSize fbSize = {0};
+    
   return fbSize;
 }
 
@@ -85,6 +82,7 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize, NSError *__autoreleas
 }
 
 - (void)getBannerWithSize:(GADAdSize)adSize {
+  NSLog(@"Serving Facebook Audience Network banner.");
   id<GADMAdNetworkConnector> strongConnector = _connector;
   id<GADMAdNetworkAdapter> strongAdapter = _adapter;
 
@@ -93,8 +91,12 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize, NSError *__autoreleas
   }
 
   NSError *error = nil;
-  FBAdSize size = GADFBAdSizeFromAdSize(adSize, &error);
-  if (error) {
+  FBAdSize size = GADFBAdSizeFromAdSize(adSize);
+
+  // size translation error
+  if (CGSizeEqualToSize(size.size, CGSizeZero)) {
+    error = GADFBErrorWithDescription([NSString stringWithFormat:@"Invalid size for Facebook mediation adapter. Size: %@",
+                                       NSStringFromGADAdSize(adSize)]);
     [strongConnector adapter:strongAdapter didFailAd:error];
     return;
   }
@@ -120,6 +122,9 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize, NSError *__autoreleas
   _bannerAd = [[FBAdView alloc] initWithPlacementID:placementID
                                              adSize:size
                                  rootViewController:rootViewController];
+    NSLog(@"placementID: %@", placementID);
+    NSLog(@"GADsize: %@", NSStringFromCGSize(adSize.size));
+    NSLog(@"FBsize: %@", NSStringFromCGSize(size.size));
   if (!_bannerAd) {
     NSString *description = [NSString
         stringWithFormat:@"%@ failed to initialize.", NSStringFromClass([FBAdView class])];
@@ -140,6 +145,10 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize, NSError *__autoreleas
 
 - (void)stopBeingDelegate {
   _adapterDelegate = nil;
+}
+
++ (FBAdSize)fBAdSizeFromGADAdSize:(GADAdSize)adSize {
+    return GADFBAdSizeFromAdSize(adSize);
 }
 
 @end

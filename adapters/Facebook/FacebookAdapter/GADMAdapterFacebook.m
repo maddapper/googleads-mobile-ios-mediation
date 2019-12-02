@@ -72,7 +72,7 @@
   id<GADMAdNetworkConnector> strongConnector = _connector;
   if ([strongConnector respondsToSelector:@selector(childDirectedTreatment)] &&
       [strongConnector childDirectedTreatment]) {
-    [FBAdSettings setIsChildDirected:[[strongConnector childDirectedTreatment] boolValue]];
+    [FBAdSettings setMixedAudience:[[strongConnector childDirectedTreatment] boolValue]];
   }
 
   _bannerAd = [[GADFBBannerAd alloc] initWithGADMAdNetworkConnector:strongConnector adapter:self];
@@ -83,7 +83,7 @@
   id<GADMAdNetworkConnector> strongConnector = _connector;
   if ([strongConnector respondsToSelector:@selector(childDirectedTreatment)] &&
       [strongConnector childDirectedTreatment]) {
-    [FBAdSettings setIsChildDirected:[[strongConnector childDirectedTreatment] boolValue]];
+    [FBAdSettings setMixedAudience:[[strongConnector childDirectedTreatment] boolValue]];
   }
 
   _interstitialAd = [[GADFBInterstitialAd alloc] initWithGADMAdNetworkConnector:strongConnector
