@@ -43,15 +43,16 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		054266E9237E15220026AA61 /* GADFBExtraAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C461F26626D0041F201 /* GADFBExtraAssets.m */; };
-		14E7B65049BC6C7F3186BC84 /* libPods-FacebookAdapterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C894F1C365E63E3C967B6F /* libPods-FacebookAdapterTests.a */; };
+		058529DA2396E17300958442 /* GADFBNetworkExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC8681E1DDA8D4400F0F1C4 /* GADFBNetworkExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		058529DB2396E17D00958442 /* GADFBExtraAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C461F26626D0041F201 /* GADFBExtraAssets.m */; };
+		058529DC2396E18A00958442 /* GADFBNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C4B1F26626D0041F201 /* GADFBNetworkExtras.m */; };
+		058529DD2396E27E00958442 /* GADMediationAdapterFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BFFB352225CA3A00C96A67 /* GADMediationAdapterFacebook.h */; };
+		058529DE2396E28400958442 /* GADMediationAdapterFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BFFB362225CA3A00C96A67 /* GADMediationAdapterFacebook.m */; };
 		457AC86F2258017700F8E09D /* GADMAdapterFacebookConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 457AC86E2258017700F8E09D /* GADMAdapterFacebookConstants.h */; };
 		457AC8732258041D00F8E09D /* GADFBBannerRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 457AC8712258041D00F8E09D /* GADFBBannerRenderer.h */; };
 		457AC8742258041D00F8E09D /* GADFBBannerRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 457AC8722258041D00F8E09D /* GADFBBannerRenderer.m */; };
 		457AC877225804F100F8E09D /* GADFBInterstitialRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 457AC875225804F100F8E09D /* GADFBInterstitialRenderer.h */; };
 		457AC878225804F100F8E09D /* GADFBInterstitialRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 457AC876225804F100F8E09D /* GADFBInterstitialRenderer.m */; };
-		45BFFB372225CA3A00C96A67 /* GADMediationAdapterFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BFFB352225CA3A00C96A67 /* GADMediationAdapterFacebook.h */; };
-		45BFFB382225CA3A00C96A67 /* GADMediationAdapterFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BFFB362225CA3A00C96A67 /* GADMediationAdapterFacebook.m */; };
 		56148C501F26626D0041F201 /* GADFBAdapterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 56148C401F26626D0041F201 /* GADFBAdapterDelegate.h */; };
 		56148C511F26626D0041F201 /* GADFBAdapterDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C411F26626D0041F201 /* GADFBAdapterDelegate.m */; };
 		56148C521F26626D0041F201 /* GADFBBannerAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 56148C421F26626D0041F201 /* GADFBBannerAd.h */; };
@@ -60,12 +61,9 @@
 		56148C551F26626D0041F201 /* GADFBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C451F26626D0041F201 /* GADFBUtils.m */; };
 		56148C571F26626D0041F201 /* GADFBInterstitialAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 56148C471F26626D0041F201 /* GADFBInterstitialAd.h */; };
 		56148C581F26626D0041F201 /* GADFBInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C481F26626D0041F201 /* GADFBInterstitialAd.m */; };
-		56148C5B1F26626D0041F201 /* GADFBNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C4B1F26626D0041F201 /* GADFBNetworkExtras.m */; };
 		56148C5E1F26626D0041F201 /* GADMAdapterFacebook.h in Headers */ = {isa = PBXBuildFile; fileRef = 56148C4E1F26626D0041F201 /* GADMAdapterFacebook.h */; };
 		56148C5F1F26626D0041F201 /* GADMAdapterFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 56148C4F1F26626D0041F201 /* GADMAdapterFacebook.m */; };
 		7DC8682E1DDA8D4400F0F1C4 /* FacebookAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC8681C1DDA8D4400F0F1C4 /* FacebookAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7DC8682F1DDA8D4400F0F1C4 /* GADFBExtraAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC8681D1DDA8D4400F0F1C4 /* GADFBExtraAssets.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7DC868301DDA8D4400F0F1C4 /* GADFBNetworkExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DC8681E1DDA8D4400F0F1C4 /* GADFBNetworkExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD84DDA72395B92C00389B0F /* FacebookAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84DDA62395B92C00389B0F /* FacebookAdapterTests.swift */; };
 		FD84DDA92395B92C00389B0F /* libFacebookAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFABB1D1DA8682C00322E02 /* libFacebookAdapter.a */; };
 /* End PBXBuildFile section */
@@ -145,7 +143,6 @@
 		7DC8681F1DDA8D4400F0F1C4 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		7DE821BF1DB04B5000AA08CF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7DFABB1D1DA8682C00322E02 /* libFacebookAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFacebookAdapter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		84C894F1C365E63E3C967B6F /* libPods-FacebookAdapterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FacebookAdapterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DB3295844AF490453364D4 /* Pods-FacebookAdapterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacebookAdapterTests.release.xcconfig"; path = "Target Support Files/Pods-FacebookAdapterTests/Pods-FacebookAdapterTests.release.xcconfig"; sourceTree = "<group>"; };
 		C67D8AD0CB0388EA29585FB6 /* Pods-FacebookAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacebookAdapter.debug.xcconfig"; path = "Target Support Files/Pods-FacebookAdapter/Pods-FacebookAdapter.debug.xcconfig"; sourceTree = "<group>"; };
 		FD56B0622395C0E500BB3913 /* FacebookAdapter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FacebookAdapter-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -169,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD84DDA92395B92C00389B0F /* libFacebookAdapter.a in Frameworks */,
-				14E7B65049BC6C7F3186BC84 /* libPods-FacebookAdapterTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +201,6 @@
 		564846D51F1936C900D5B552 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84C894F1C365E63E3C967B6F /* libPods-FacebookAdapterTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -323,13 +318,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45BFFB372225CA3A00C96A67 /* GADMediationAdapterFacebook.h in Headers */,
+				058529DA2396E17300958442 /* GADFBNetworkExtras.h in Headers */,
 				457AC86F2258017700F8E09D /* GADMAdapterFacebookConstants.h in Headers */,
 				56148C501F26626D0041F201 /* GADFBAdapterDelegate.h in Headers */,
+				058529DD2396E27E00958442 /* GADMediationAdapterFacebook.h in Headers */,
 				56148C521F26626D0041F201 /* GADFBBannerAd.h in Headers */,
-				7DC868301DDA8D4400F0F1C4 /* GADFBNetworkExtras.h in Headers */,
 				457AC8732258041D00F8E09D /* GADFBBannerRenderer.h in Headers */,
-				7DC8682F1DDA8D4400F0F1C4 /* GADFBExtraAssets.h in Headers */,
 				457AC877225804F100F8E09D /* GADFBInterstitialRenderer.h in Headers */,
 				56148C541F26626D0041F201 /* GADFBUtils.h in Headers */,
 				56148C5E1F26626D0041F201 /* GADMAdapterFacebook.h in Headers */,
@@ -399,6 +393,7 @@
 					};
 					7DFABB1C1DA8682C00322E02 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FLA943DDZ8;
 						LastSwiftMigration = 1120;
 					};
 					7DFABB531DA86A1100322E02 = {
@@ -406,6 +401,7 @@
 					};
 					FD84DDA32395B92C00389B0F = {
 						CreatedOnToolsVersion = 11.2.1;
+						DevelopmentTeam = FLA943DDZ8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -543,13 +539,13 @@
 				56148C581F26626D0041F201 /* GADFBInterstitialAd.m in Sources */,
 				56148C511F26626D0041F201 /* GADFBAdapterDelegate.m in Sources */,
 				56148C531F26626D0041F201 /* GADFBBannerAd.m in Sources */,
+				058529DB2396E17D00958442 /* GADFBExtraAssets.m in Sources */,
+				058529DE2396E28400958442 /* GADMediationAdapterFacebook.m in Sources */,
 				457AC8742258041D00F8E09D /* GADFBBannerRenderer.m in Sources */,
-				054266E9237E15220026AA61 /* GADFBExtraAssets.m in Sources */,
-				45BFFB382225CA3A00C96A67 /* GADMediationAdapterFacebook.m in Sources */,
 				56148C5F1F26626D0041F201 /* GADMAdapterFacebook.m in Sources */,
-				56148C5B1F26626D0041F201 /* GADFBNetworkExtras.m in Sources */,
 				56148C551F26626D0041F201 /* GADFBUtils.m in Sources */,
 				457AC878225804F100F8E09D /* GADFBInterstitialRenderer.m in Sources */,
+				058529DC2396E18A00958442 /* GADFBNetworkExtras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +594,7 @@
 		7D1B6CA41DC2ACF900D8CABF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = FacebookAdapter;
 			};
 			name = Debug;
@@ -606,7 +602,7 @@
 		7D1B6CA51DC2ACF900D8CABF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = FacebookAdapter;
 			};
 			name = Release;
@@ -615,6 +611,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D46CFDF1DB6B7CC0050F612 /* Adapter.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -638,6 +635,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -657,9 +655,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FacebookAdapter;
 				VALID_ARCHS = "$(VALID_ARCHS)";
@@ -670,6 +668,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D46CFDF1DB6B7CC0050F612 /* Adapter.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -693,6 +692,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -706,8 +706,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FacebookAdapter;
 				VALIDATE_PRODUCT = YES;
@@ -719,12 +720,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C67D8AD0CB0388EA29585FB6 /* Pods-FacebookAdapter.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULE_NAME = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = FacebookAdapter;
 				SEPARATE_STRIP = NO;
 				SKIP_INSTALL = YES;
@@ -742,9 +746,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 500F35C52F3F29AEC46FDCCB /* Pods-FacebookAdapter.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -765,14 +771,14 @@
 		7DFABB551DA86A1100322E02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
 		7DFABB561DA86A1100322E02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -791,12 +797,14 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = FacebookAdapterTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-l\"c++\"",
@@ -867,6 +875,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = FacebookAdapterTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

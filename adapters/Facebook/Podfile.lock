@@ -37,7 +37,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK (~> 7.50.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - FBAudienceNetwork
     - FBSDKCoreKit
     - Google-Mobile-Ads-SDK
@@ -55,4 +55,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 237d6ade401d00db0796bae3df1eb5c220087535
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.5

@@ -19,7 +19,6 @@
 #import "GADFBAdapterDelegate.h"
 #import "GADFBUtils.h"
 #import "GADMAdapterFacebookConstants.h"
-#import "GADMediationAdapterFacebook.h"
 
 @implementation GADFBInterstitialAd {
   /// Connector from Google Mobile Ads SDK to receive ad configurations.
