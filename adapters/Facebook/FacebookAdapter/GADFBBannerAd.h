@@ -14,7 +14,6 @@
 
 #import <Foundation/Foundation.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
-#import <FBAudienceNetwork/FBAudienceNetwork.h>
 
 /// Creates and manages Facebook Audience Network banner ads.
 @interface GADFBBannerAd : NSObject
@@ -32,7 +31,5 @@
 
 /// Stops the receiver from delegating any notifications from Facebook's Audience Network.
 - (void)stopBeingDelegate;
-
-+ (FBAdSize)fBAdSizeFromGADAdSize:(GADAdSize)adSize;
 
 @end
