@@ -81,7 +81,7 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize) {
 }
 
 - (void)getBannerWithSize:(GADAdSize)adSize {
-//  NSLog(@"Serving Facebook Audience Network banner.");
+  NSLog(@"Serving Facebook Audience Network banner.");
   id<GADMAdNetworkConnector> strongConnector = _connector;
   id<GADMAdNetworkAdapter> strongAdapter = _adapter;
 
@@ -121,9 +121,9 @@ static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize) {
   _bannerAd = [[FBAdView alloc] initWithPlacementID:placementID
                                              adSize:size
                                  rootViewController:rootViewController];
-//    NSLog(@"placementID: %@", placementID);
-//    NSLog(@"GADsize: %@", NSStringFromCGSize(adSize.size));
-//    NSLog(@"FBsize: %@", NSStringFromCGSize(size.size));
+    NSLog(@"placementID: %@", placementID);
+    NSLog(@"GADsize: %@", NSStringFromCGSize(adSize.size));
+    NSLog(@"FBsize: %@", NSStringFromCGSize(size.size));
   if (!_bannerAd) {
     NSString *description = [NSString
         stringWithFormat:@"%@ failed to initialize.", NSStringFromClass([FBAdView class])];
