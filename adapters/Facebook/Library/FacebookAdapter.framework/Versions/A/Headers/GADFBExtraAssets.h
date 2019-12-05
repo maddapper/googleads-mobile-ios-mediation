@@ -13,7 +13,11 @@
 // limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
-#import <FacebookAdapter/GADFBExtraAssets.h>
-#import <FacebookAdapter/GADFBNetworkExtras.h>
+/// Facebook native ad subtitle key used with the extra assets dictionary declared in
+/// GADMediatedNativeAd.h.
+extern NSString *const GADFBSubtitle;
+
+/// Facebook native ad social context key used with the extra assets dictionary declared in
+/// GADMediatedNativeAd.h.
+extern NSString *const GADFBSocialContext;

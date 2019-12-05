@@ -20,6 +20,7 @@
 #import "GADFBAdapterDelegate.h"
 #import "GADFBUtils.h"
 #import "GADMAdapterFacebookConstants.h"
+#import "GADMediationAdapterFacebook.h"
 
 /// Converts ad size from Google Mobile Ads SDK to ad size interpreted by Facebook Audience Network.
 static FBAdSize GADFBAdSizeFromAdSize(GADAdSize gadAdSize) {
